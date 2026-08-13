@@ -42,22 +42,28 @@
             let playerSize = 40;
 
          
-
+            let reefColor = 'darkmagenta';
+            let warshipColor = 'firebrick';
+            let islandColor = 'teal';
+            let enemieSize = 40;
             let enemies = [
                 //Warships
-                { x: 0,   y: 650, speed: 5,   size: 40, color: 'firebrick'},
-                { x: 200, y: 550, speed: -4,  size: 40, color: 'firebrick'},
-                { x: 100, y: 450, speed: 6,   size: 40, color: 'firebrick'},
-                { x: 400, y: 350, speed: -3,  size: 40, color: 'firebrick'},
-                { x: 300, y: 150, speed: 2,   size: 40, color: 'firebrick'},
-                { x: 500, y: 250, speed: 12,  size: 40, color: 'firebrick'},
-                { x: 600, y: 750, speed: -12, size: 40, color: 'firebrick'},
+                { x: 0,   y: 650,  speed: 5,   size: enemieSize, color: warshipColor},
+                { x: 200, y: 550,  speed: -4,  size: enemieSize, color: warshipColor},
+                { x: 100, y: 450,  speed: 6,   size: enemieSize, color: warshipColor},
+                { x: 400, y: 350,  speed: -3,  size: enemieSize, color: warshipColor},
+                { x: 300, y: 150,  speed: 2,   size: enemieSize, color: warshipColor},
+                { x: 500, y: 250,  speed: 12,  size: enemieSize, color: warshipColor},
+                { x: 600, y: 750,  speed: -12, size: enemieSize, color: warshipColor},
                 //Reefs
-                { x: 300, y: 300, speed: 0,   size: 40, color: 'deeppink'},
-                { x: 600, y: 250, speed: 0,   size: 40, color: 'deeppink'},
-                { x: 200, y: 650, speed: 0,   size: 40, color: 'deeppink'},
-                { x: 100, y: 350, speed: 0,   size: 40, color: 'deeppink'},
-                { x: 300, y: -50, speed: 2,   size: 40, color: 'deeppink'}
+                { x: 300, y: 300,  speed: 0,   size: enemieSize, color: reefColor},
+                { x: 600, y: 250,  speed: 0,   size: enemieSize, color: reefColor},
+                { x: 200, y: 650,  speed: 0,   size: enemieSize, color: reefColor},
+                { x: 100, y: 350,  speed: 0,   size: enemieSize, color: reefColor},
+                { x: 300, y: -50,  speed: 0,   size: enemieSize, color: reefColor},
+                //Islands
+                { x: 100, y: 500,  speed: 0,   size: enemieSize, color: islandColor},
+                { x: 500, y: -100, speed: 0,   size: enemieSize, color: islandColor}
             ];
             //general gold
             let coinX = Math.random() * 1100 + 50;
