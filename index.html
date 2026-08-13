@@ -65,7 +65,10 @@
             let coinSize = 20;
             let score = 0;
 
-            // Player 1 Controls (Arrow Keys / WASD)
+            //capital gold
+            let capitalScore = 0;
+
+            // Player Controls (Arrow Keys / WASD)
             window.addEventListener("keydown", function(event) {
                 if (event.key === "ArrowRight" || event.key === "d") {
                     if (playerX < canvas.width - playerSize) { playerX = playerX + 15; }
@@ -122,14 +125,26 @@
                 ctx.font = "30px serif";
                 ctx.fillText("Score: " + score, 40, 100);
 
+                //Draw Capital Score
+                ctx.fillStyle = "white";
+                ctx.font = "30px serif"; 
+                    ctx.fillText("Captial Score: " + capitalScore, "/10", 40, 200);
+
                 // Setup Player Hitboxes
                 let playerLeft = playerX;
                 let playerRight = playerX + playerSize;
                 let playerTop = playerY;
                 let playerBottom = playerY + playerSize;
 
-              
-                
+                if (score === 10){
+                    score = 0;
+                    capitalScore = capitalScore + 1;
+                }
+                if (capitalScore === 10) {
+                    alert("You have won the game!");
+                    capitalScore === 0;
+                    score === 0;
+                }
                 
                 
 
