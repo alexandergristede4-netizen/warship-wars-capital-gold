@@ -158,7 +158,7 @@
 
                     // Collision check: Player 1 vs Enemy
                     if (playerRight > enemyLeft && playerLeft < enemyRight && playerBottom > enemyTop && playerTop < enemyBottom) {
-                        playerX = 600;
+                        playerX = Math.random() * 1100 + 50;
                         playerY = 400;
                         score = 0;
                     }
