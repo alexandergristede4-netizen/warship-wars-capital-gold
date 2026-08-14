@@ -142,17 +142,17 @@
                 }
                 
                 //Update Islands
-                islands.forEach(function(land) {
-                    land.x = land.x + land.speed;
-                }
-                    ctx.fillStyle = land.color;
-                    ctx.fillRect(land.x, land.y, land.size, land.size);
+                //islands.forEach(function(land) {
+                  //  land.x = land.x + land.speed;
+                //}
+                    //ctx.fillStyle = land.color;
+                    //ctx.fillRect(land.x, land.y, land.size, land.size);
 
-                    let landLeft = land.x;
-                    let landRight = land.x + land.size;
-                    let landTop = land.y;
-                    let landBottom = land.y + land.size;
-               )
+                    //let landLeft = land.x;
+                    //let landRight = land.x + land.size;
+                    //let landTop = land.y;
+                    //let landBottom = land.y + land.size;
+               //)
                 // Update Enemies and Check Player-Enemy Collisions
                 enemies.forEach(function(badGuy) {
                     badGuy.x = badGuy.x + badGuy.speed;
