@@ -44,7 +44,7 @@
          
             let reefColor = 'darkmagenta';
             let warshipColor = 'firebrick';
-            let islandColor = 'teal';
+            let islandColor = '#15ad61';
             let islandSize = 40;
             let enemieSize = 25;
             let enemies = [
@@ -141,7 +141,17 @@
                     score === 0;
                 }
                 
-                
+                //Update Islands
+                islands.forEach(function(land) {
+                    land.x = land.x + land.speed;
+
+                    ctx.fillStyle = land.color;
+                    ctx.fillRect(land.x, land.y, land.size, land.size);
+
+                    let landLeft = land.x;
+                    let landRight = land.x + land.size;
+                    let landTop = land.y;
+                    let landBottom = land.y + land.size;
 
                 // Update Enemies and Check Player-Enemy Collisions
                 enemies.forEach(function(badGuy) {
