@@ -155,7 +155,7 @@
                     let landRight = land.x + land.size;
                     let landTop = land.y;
                     let landBottom = land.y + land.size;
-               
+                });
                 // Update Enemies and Check Player-Enemy Collisions
                 enemies.forEach(function(badGuy) {
                     badGuy.x = badGuy.x + badGuy.speed;
@@ -163,7 +163,7 @@
                     if (badGuy.x > canvas.width - badGuy.size || badGuy.x < 0) {
                         badGuy.speed = badGuy.speed * -1;
                     }
-                        });
+                        
                     // Draw Enemy
                     ctx.fillStyle = badGuy.color;
                     ctx.fillRect(badGuy.x, badGuy.y, badGuy.size, badGuy.size);
