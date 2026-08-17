@@ -109,7 +109,7 @@
                     if (player2Y > canvas.height - player2Size) { player2Y = player2Y - 15; }
                 }
                 if (event.key === "ArrowDown") {
-                    if (player2Y > 0) { player2Y = player2Y + 15; }
+                    if (player2Y < 0) { player2Y = player2Y + 15; }
                 }
             });
 
