@@ -44,7 +44,7 @@
          
             let reefColor = '#c2577d';
             let warshipColor = '#590409';
-            let islandColor = '#202352';
+            let islandColor = '#208c54';
             let islandSize = 35;
             let enemieSize = 25;
             let enemies = [
@@ -101,17 +101,17 @@
             function updateGame() {
                 // Clear and Redraw Background
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = "cornflowerblue";
+                ctx.fillStyle = "#32577a";
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
                 // Draw Coin
-                ctx.fillStyle = "goldenrod";
+                ctx.fillStyle = "#8c8b4f";
                 ctx.beginPath();
                 ctx.arc(coinX, coinY, coinSize, 0, Math.PI * 2);
                 ctx.fill();
 
                 // Draw Player 1
-                ctx.fillStyle = "cadetblue";
+                ctx.fillStyle = "#202352";
                 ctx.fillRect(playerX, playerY, playerSize, playerSize);
 
 
