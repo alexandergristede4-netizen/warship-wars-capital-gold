@@ -27,7 +27,6 @@
     </style>
 </head>
 <body>
-<h1 style = "size: 8px; color: white;">Welcome to Warship Wars: Capital Gold. Use the arrow keys or WASD to move.</h1>
     <canvas tabindex="0" id="gameCanvas" width="1200" height="800"></canvas>
 
     <script>
@@ -40,6 +39,10 @@
             let playerX = Math.random() * 1100 + 50;
             let playerY = Math.random() * 600 + 100;
             let playerSize = 25;
+
+            let player2X = Math.random() * 1100 + 50;
+            let player2Y = Math.random() * 600 + 100;
+            let player2Size = 25;
 
          
             let reefColor = '#c2577d';
@@ -62,7 +65,9 @@
                 { x: 200, y: 650,  speed: 0,   size: enemieSize, color: reefColor}, //R3
                 { x: 100, y: 350,  speed: 0,   size: enemieSize, color: reefColor}, //R4
                 { x: 300, y: -50,  speed: 0,   size: enemieSize, color: reefColor}, //R5
-                { x: 400, y: 340,  speed: 0,   size: enemieSize, color: reefColor}  //R6
+                { x: 400, y: 340,  speed: 0,   size: enemieSize, color: reefColor}, //R6
+                { x: 100, y: 540,  speed: 0,   size: enemieSize, color: reefColor}, //R7
+                { x: 350, y: 350,  speed: 0,   size: enemieSize, color: reefColor}  //R8
             ];
 
             let islands = [
@@ -79,21 +84,36 @@
             //capital gold
             let capitalScore = 0;
 
-            // Player Controls (Arrow Keys / WASD)
+            // Player 1 Controls (WASD)
             window.addEventListener("keydown", function(event) {
-                if (event.key === "ArrowRight" || event.key === "d") {
+                if (event.key === "d") {
                     if (playerX < canvas.width - playerSize) { playerX = playerX + 15; }
                 }
-                if (event.key === "ArrowLeft" || event.key === "a") {
+                if (event.key === "a") {
                     if (playerX > 0) { playerX = playerX - 15; }
                 }
-                if (event.key === "ArrowDown" || event.key === "s") {
+                if (event.key === "s") {
                     if (playerY < canvas.height - playerSize) { playerY = playerY + 15; }
                 }
-                if (event.key === "ArrowUp" || event.key === "w") {
+                if (event.key === "w") {
                     if (playerY > 0) { playerY = playerY - 15; }
                 }
+
+                if (event.key === "ArrowRight") {
+                    if (player2X < canvas.width - player2Size) { player2X = player2X + 15; }
+                }
+                if (event.key === "ArrowLeft") {
+                    if (player2X > 0) { player2X = player2X - 15; }
+                }
+                if (event.key === "ArrowUp") {
+                    if (player2Y > canvas.height - player2Size) { player2Y = player2Y - 15; }
+                }
+                if (event.key === "ArrowDown") {
+                    if (player2Y > 0) { player2Y = player2Y + 15; }
+                }
             });
+
+        
 
 
             
@@ -114,6 +134,9 @@
                 ctx.fillStyle = "#202352";
                 ctx.fillRect(playerX, playerY, playerSize, playerSize);
 
+                // Draw Player 2
+                ctx.fillStyle = "#8827ab";
+                ctx.fillRect(player2X, player2Y, player2Size, player2Size);
 
                 // Draw Score
                 ctx.fillStyle = "white";
