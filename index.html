@@ -208,9 +208,17 @@
                         score = 0;
                     }
 
-                  
-                });
+                      // Collision check: Player 2 vs Enemy
+                   if (player2Right > enemyLeft && player2left < enemyRight && player2Bottom > enemyTop && player2Top < enemyBottom) {
+                       player2X = Math.random() * 1100 + 50;
+                       player2Y = Math.random() * 600 + 100;
+                       score = 0;
+                   }
 
+
+                    
+                });
+                
                 // Setup Coin Hitboxes (Fixed bounds calculation relative to center point radius)
                 let coinLeft = coinX - coinSize;
                 let coinRight = coinX + coinSize;
@@ -223,8 +231,12 @@
                     coinX = Math.random() * 1100 + 50;
                     coinY = Math.random() * 600 + 100;
                 }
-
-                
+               // Collision check: Player 2 vs Coin
+                if (player2Right > coinLeft && player2Left < coinRight && player2Bottom > coinTop && player2Top < coinBottom) {
+                    score = score + 1;
+                    coinX = Math.random() * 1100 + 50;
+                    coinY = Math.random() * 600 + 100;
+                }
                
                  
                    
