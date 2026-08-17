@@ -148,12 +148,17 @@
                 ctx.font = "30px serif"; 
                 ctx.fillText("Capital Score: " + capitalScore, 40, 150);
 
-                // Setup Player Hitboxes
+                // Setup Player 1 Hitboxes
                 let playerLeft = playerX;
                 let playerRight = playerX + playerSize;
                 let playerTop = playerY;
                 let playerBottom = playerY + playerSize;
-
+                // Setup Player 2 Hitboxes
+                let player2Left = player2X;
+                let player2Right = player2Y + player2Size;
+                let player2Top = player2Y;
+                let player2Bottom = player2Y + player2Size;
+                
                 if (score === 10){
                     score = 0;
                     capitalScore = capitalScore + 1;
