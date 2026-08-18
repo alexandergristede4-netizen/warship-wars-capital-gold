@@ -91,17 +91,6 @@
 
 
 
-            
-                    let enemyLeft = badGuy.x;
-                    let enemyRight = badGuy.x + badGuy.size;
-                    let enemyTop = badGuy.y;
-                    let enemyBottom = badGuy.y + badGuy.size;
-
-              let landLeft = land.x;
-                    let landRight = land.x + land.size;
-                    let landTop = land.y;
-                    let landBottom = land.y + land.size;
-
 
                 // Setup Player 1 Hitboxes
                 let playerLeft = playerX;
@@ -202,6 +191,10 @@
                     ctx.fillStyle = land.color;
                     ctx.fillRect(land.x, land.y, land.size, land.size);
 
+                    let landLeft = land.x;
+                    let landRight = land.x + land.size;
+                    let landTop = land.y;
+                    let landBottom = land.y + land.size;
                   
                 });
                 // Update Enemies and Check Player-Enemy Collisions
@@ -216,6 +209,10 @@
                     ctx.fillStyle = badGuy.color;
                     ctx.fillRect(badGuy.x, badGuy.y, badGuy.size, badGuy.size);
 
+                    let enemyLeft = badGuy.x;
+                    let enemyRight = badGuy.x + badGuy.size;
+                    let enemyTop = badGuy.y;
+                    let enemyBottom = badGuy.y + badGuy.size;
 
                     // Collision check: Player 1 vs Enemy
                     if (playerRight > enemyLeft && playerLeft < enemyRight && playerBottom > enemyTop && playerTop < enemyBottom) {
