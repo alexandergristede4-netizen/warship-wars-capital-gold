@@ -35,7 +35,7 @@
             const ctx = canvas.getContext("2d");
 
             canvas.focus();
-
+            //Start variable Sector
             let playerX = Math.random() * 1100 + 50;
             let playerY = Math.random() * 600 + 100;
             let playerSize = 25;
@@ -84,6 +84,39 @@
             //capital gold
             let capitalScore = 0;
 
+            let coinLeft = coinX - coinSize;
+            let coinRight = coinX + coinSize;
+            let coinTop = coinY - coinSize;
+            let coinBottom = coinY + coinSize;
+
+
+
+            
+                    let enemyLeft = badGuy.x;
+                    let enemyRight = badGuy.x + badGuy.size;
+                    let enemyTop = badGuy.y;
+                    let enemyBottom = badGuy.y + badGuy.size;
+
+              let landLeft = land.x;
+                    let landRight = land.x + land.size;
+                    let landTop = land.y;
+                    let landBottom = land.y + land.size;
+
+
+                // Setup Player 1 Hitboxes
+                let playerLeft = playerX;
+                let playerRight = playerX + playerSize;
+                let playerTop = playerY;
+                let playerBottom = playerY + playerSize;
+                // Setup Player 2 Hitboxes
+                let player2Left = player2X;
+                let player2Right = player2Y + player2Size;
+                let player2Top = player2Y;
+                let player2Bottom = player2Y + player2Size;
+
+
+            //End Variable Sector
+            
             // Player 1 Controls (WASD)
             window.addEventListener("keydown", function(event) {
                 if (event.key === "d") {
@@ -148,16 +181,6 @@
                 ctx.font = "30px serif"; 
                 ctx.fillText("Capital Score: " + capitalScore, 40, 150);
 
-                // Setup Player 1 Hitboxes
-                let playerLeft = playerX;
-                let playerRight = playerX + playerSize;
-                let playerTop = playerY;
-                let playerBottom = playerY + playerSize;
-                // Setup Player 2 Hitboxes
-                let player2Left = player2X;
-                let player2Right = player2Y + player2Size;
-                let player2Top = player2Y;
-                let player2Bottom = player2Y + player2Size;
                 
                 if (score === 10){
                     score = 0;
@@ -179,10 +202,7 @@
                     ctx.fillStyle = land.color;
                     ctx.fillRect(land.x, land.y, land.size, land.size);
 
-                    let landLeft = land.x;
-                    let landRight = land.x + land.size;
-                    let landTop = land.y;
-                    let landBottom = land.y + land.size;
+                  
                 });
                 // Update Enemies and Check Player-Enemy Collisions
                 enemies.forEach(function(badGuy) {
@@ -196,10 +216,6 @@
                     ctx.fillStyle = badGuy.color;
                     ctx.fillRect(badGuy.x, badGuy.y, badGuy.size, badGuy.size);
 
-                    let enemyLeft = badGuy.x;
-                    let enemyRight = badGuy.x + badGuy.size;
-                    let enemyTop = badGuy.y;
-                    let enemyBottom = badGuy.y + badGuy.size;
 
                     // Collision check: Player 1 vs Enemy
                     if (playerRight > enemyLeft && playerLeft < enemyRight && playerBottom > enemyTop && playerTop < enemyBottom) {
@@ -213,6 +229,9 @@
                        player2X = Math.random() * 1100 + 50;
                        player2Y = Math.random() * 600 + 100;
                        score = 0;
+                      
+                       //Tester alert
+                       alert("Collision Between Player 2 and enemy detected");
                    }
 
 
@@ -220,10 +239,7 @@
                 });
                 
                 // Setup Coin Hitboxes (Fixed bounds calculation relative to center point radius)
-                let coinLeft = coinX - coinSize;
-                let coinRight = coinX + coinSize;
-                let coinTop = coinY - coinSize;
-                let coinBottom = coinY + coinSize;
+               
 
                 // Collision check: Player 1 vs Coin
                 if (playerRight > coinLeft && playerLeft < coinRight && playerBottom > coinTop && playerTop < coinBottom) {
@@ -236,6 +252,8 @@
                     score = score + 1;
                     coinX = Math.random() * 1100 + 50;
                     coinY = Math.random() * 600 + 100;
+                    //Tester Alert
+                    alert("Collision Between Player 2 and coin detected");
                 }
                
                  
