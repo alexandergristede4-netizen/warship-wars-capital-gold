@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" lang ="eng">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Warship Wars: Capital Gold</title>
+    <link rel="icon" type="image/x-icon" href="favicon ico.png">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #2a8765;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #gameCanvas {
+            max-width: 100%;
+            max-height: 100%;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.7);
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<h1 style = "size: 8px; color: white;">Welcome to Warship Wars: Capital Gold. Use the arrow keys or WASD to move.</h1>
+    <canvas tabindex="0" id="gameCanvas" width="1200" height="800"></canvas>
+
+    <script>
+        window.onload = function() {
+            const canvas = document.getElementById("gameCanvas");
+            const ctx = canvas.getContext("2d");
+
+            canvas.focus();
+
+            let playerX = Math.random() * 1100 + 50;
+            let playerY = Math.random() * 600 + 100;
+            let playerSize = 25;
+
+         
+            let reefColor = '#c2577d';
+            let warshipColor = '#590409';
+            let islandColor = '#208c54';
+            let islandSize = 35;
+            let enemieSize = 25;
+            let enemies = [
+                //Warships
+                { x: 0,   y: 650,  speed: 15,  size: enemieSize, color: warshipColor}, //S1
+                { x: 200, y: 550,  speed: 14,  size: enemieSize, color: warshipColor}, //S2
+                { x: 100, y: 450,  speed: 16,  size: enemieSize, color: warshipColor}, //S3
+                { x: 400, y: 350,  speed: 13,  size: enemieSize, color: warshipColor}, //S4
+                { x: 300, y: 150,  speed: 12,  size: enemieSize, color: warshipColor}, //S5
+                { x: 500, y: 250,  speed: 12,  size: enemieSize, color: warshipColor}, //S6
+                { x: 600, y: 750,  speed: 12,  size: enemieSize, color: warshipColor}, //S7
+                //Reefs
+                { x: 300, y: 300,  speed: 0,   size: enemieSize, color: reefColor}, //R1
+                { x: 600, y: 250,  speed: 0,   size: enemieSize, color: reefColor}, //R2
+                { x: 200, y: 650,  speed: 0,   size: enemieSize, color: reefColor}, //R3
+                { x: 100, y: 350,  speed: 0,   size: enemieSize, color: reefColor}, //R4
+                { x: 300, y: -50,  speed: 0,   size: enemieSize, color: reefColor}, //R5
+                { x: 400, y: 340,  speed: 0,   size: enemieSize, color: reefColor}  //R6
+            ];
+
+            let islands = [
+                //Islands
+                 { x: 100, y: 500,  speed: 0,   size: islandSize, color: islandColor}, //I1
+                 { x: 500, y: -100, speed: 0,   size: islandSize, color: islandColor}  //I2
+                ];
+            //general gold
+            let coinX = Math.random() * 1100 + 50;
+            let coinY = Math.random() * 600 + 100;
+            let coinSize = 10;
+            let score = 0;
+
+            //capital gold
+            let capitalScore = 0;
+
+            // Player Controls (Arrow Keys / WASD)
+            window.addEventListener("keydown", function(event) {
+                if (event.key === "ArrowRight" || event.key === "d") {
+                    if (playerX < canvas.width - playerSize) { playerX = playerX + 15; }
+                }
+                if (event.key === "ArrowLeft" || event.key === "a") {
+                    if (playerX > 0) { playerX = playerX - 15; }
+                }
+                if (event.key === "ArrowDown" || event.key === "s") {
+                    if (playerY < canvas.height - playerSize) { playerY = playerY + 15; }
+                }
+                if (event.key === "ArrowUp" || event.key === "w") {
+                    if (playerY > 0) { playerY = playerY - 15; }
+                }
+            });
+
+
+            
+
+            function updateGame() {
+                // Clear and Redraw Background
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = "#32577a";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Draw Coin
+                ctx.fillStyle = "#8c8b4f";
+                ctx.beginPath();
+                ctx.arc(coinX, coinY, coinSize, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Draw Player 1
+                ctx.fillStyle = "#202352";
+                ctx.fillRect(playerX, playerY, playerSize, playerSize);
+
+
+                // Draw Score
+                ctx.fillStyle = "white";
+                ctx.font = "30px serif";
+                ctx.fillText("Score: " + score, 40, 100);
+
+                //Draw Capital Score
+                ctx.fillStyle = "white";
+                ctx.font = "30px serif"; 
+                ctx.fillText("Capital Score: " + capitalScore, 40, 150);
+
+                // Setup Player Hitboxes
+                let playerLeft = playerX;
+                let playerRight = playerX + playerSize;
+                let playerTop = playerY;
+                let playerBottom = playerY + playerSize;
+
+                if (score === 10){
+                    score = 0;
+                    capitalScore = capitalScore + 1;
+                }
+                if (capitalScore === 10) {
+                    alert("You have won the game!");
+                    capitalScore === 0;
+                    score === 0;
+                }
+                
+                //Update Islands
+                islands.forEach(function(land) {
+                    land.x = land.x + land.speed;
+                
+                if (land.x > canvas.width - land.size || land.x < 0) {
+                    land.speed = land.speed * -1;
+                }
+                    ctx.fillStyle = land.color;
+                    ctx.fillRect(land.x, land.y, land.size, land.size);
+
+                    let landLeft = land.x;
+                    let landRight = land.x + land.size;
+                    let landTop = land.y;
+                    let landBottom = land.y + land.size;
+                });
+                // Update Enemies and Check Player-Enemy Collisions
+                enemies.forEach(function(badGuy) {
+                    badGuy.x = badGuy.x + badGuy.speed;
+
+                    if (badGuy.x > canvas.width - badGuy.size || badGuy.x < 0) {
+                        badGuy.speed = badGuy.speed * -1;
+                    }
+                        
+                    // Draw Enemy
+                    ctx.fillStyle = badGuy.color;
+                    ctx.fillRect(badGuy.x, badGuy.y, badGuy.size, badGuy.size);
+
+                    let enemyLeft = badGuy.x;
+                    let enemyRight = badGuy.x + badGuy.size;
+                    let enemyTop = badGuy.y;
+                    let enemyBottom = badGuy.y + badGuy.size;
+
+                    // Collision check: Player 1 vs Enemy
+                    if (playerRight > enemyLeft && playerLeft < enemyRight && playerBottom > enemyTop && playerTop < enemyBottom) {
+                        playerX = Math.random() * 1100 + 50;
+                        playerY = Math.random() * 600 + 100;
+                        score = 0;
+                    }
+
+                  
+                });
+
+                // Setup Coin Hitboxes (Fixed bounds calculation relative to center point radius)
+                let coinLeft = coinX - coinSize;
+                let coinRight = coinX + coinSize;
+                let coinTop = coinY - coinSize;
+                let coinBottom = coinY + coinSize;
+
+                // Collision check: Player 1 vs Coin
+                if (playerRight > coinLeft && playerLeft < coinRight && playerBottom > coinTop && playerTop < coinBottom) {
+                    score = score + 1;
+                    coinX = Math.random() * 1100 + 50;
+                    coinY = Math.random() * 600 + 100;
+                }
+
+                
+               
+                 
+                   
+                    
+             
+            }
+
+            setInterval(updateGame, 20);
+        };
+    </script>
+
+</body>
+</html>
