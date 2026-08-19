@@ -46,7 +46,7 @@
             let islandColor = '#208c54';
             let islandSize = 35;
             let enemieSize = 25;
-            let enimieSpeed = 20;
+            let enimieSpeed = Math.random();
             let enemies = [
                 //Warships
                 { x: 0,   y: 650,  speed: enimieSpeed,  size: enemieSize, color: warshipColor}, //S1
@@ -181,6 +181,7 @@
                         playerX = Math.random() * 1100 + 50;
                         playerY = Math.random() * 600 + 100;
                         score = score - 1;
+                        badGuy.speed = Math.speed
                     }
 
                   
