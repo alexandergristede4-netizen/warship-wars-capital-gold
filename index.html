@@ -213,18 +213,10 @@
             setInterval(updateGame, 20);
         };
     </script>
-<audio id="background music" loop>
-  <source src="mondamusic-retro-arcade-game-music-512837.mp3" type="audio/mpeg">
+<audio id="background music" src="mondamusic-retro-arcade-game-music-512837.mp3" type="audio/mpeg" loop>
 </audio>
 
-<script>
-  document.addEventListener('click', function() {
-    const audio = document.getElementById('bg-music');
-    audio.play().catch(error => {
-      console.log("Autoplay was prevented by the browser:", error);
-    });
-  }, { once: true });
-</script>
+
 
 </body>
 </html>
