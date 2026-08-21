@@ -128,6 +128,9 @@
                 ctx.font = "30px serif"; 
                 ctx.fillText("Capital Score: " + capitalScore, 40, 150);
 
+                //Draw Port Symbol
+                ctx.fillStyle = "white";
+                ctx.font = "30 px serif";
                 // Setup Player Hitboxes
                 let playerLeft = playerX;
                 let playerRight = playerX + playerSize;
@@ -159,6 +162,11 @@
                     let landTop = land.y;
                     let landBottom = land.y + land.size;
                 });
+                //Draw Port Symbol
+                ctx.fillStyle = "white";
+                ctx.font = "30 px serif";
+                ctx.fillText("⚓", 100, 50);
+                
                 // Update Enemies and Check Player-Enemy Collisions
                 enemies.forEach(function(badGuy) {
                     badGuy.x = badGuy.x + badGuy.speed;
