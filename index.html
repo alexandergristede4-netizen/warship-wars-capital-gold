@@ -36,8 +36,8 @@
          
             canvas.focus();
 
-            let playerX = Math.random() * 1100 + 50;
-            let playerY = Math.random() * 600 + 100;
+            let playerX = 100;
+            let playerY = 527;
             let playerSize = 20;
 
          
@@ -113,9 +113,7 @@
                 ctx.arc(coinX, coinY, coinSize, 0, Math.PI * 2);
                 ctx.fill();
 
-                // Draw Player 1
-                ctx.fillStyle = "#202352";
-                ctx.fillRect(playerX, playerY, playerSize, playerSize);
+              
 
 
                 // Draw Score
@@ -128,9 +126,44 @@
                 ctx.font = "30px serif"; 
                 ctx.fillText("Capital Score: " + capitalScore, 40, 150);
 
+
+
+
+                   // Update Enemies and Check Player-Enemy Collisions
+                enemies.forEach(function(badGuy) {
+                    badGuy.x = badGuy.x + badGuy.speed;
+
+                    if (badGuy.x > canvas.width - badGuy.size || badGuy.x < 0) {
+                        badGuy.speed = badGuy.speed * -1;
+                    }
+                        
+                    // Draw Enemy
+                    ctx.fillStyle = badGuy.color;
+                    ctx.fillRect(badGuy.x, badGuy.y, badGuy.size, badGuy.size);
+
+                    let enemyLeft = badGuy.x;
+                    let enemyRight = badGuy.x + badGuy.size;
+                    let enemyTop = badGuy.y;
+                    let enemyBottom = badGuy.y + badGuy.size;
+
+                    // Collision check: Player 1 vs Enemy
+                    if (playerRight > enemyLeft && playerLeft < enemyRight && playerBottom > enemyTop && playerTop < enemyBottom) {
+                        playerX = Math.random() * 1100 + 50;
+                        playerY = Math.random() * 600 + 100;
+                        if (score =  ! 0) { 
+                            score = score -1 
+                        }
+                        else { score = score}
+                    }
+
+                  
+                });
                 //Draw Port Symbol
                 ctx.fillStyle = "white";
                 ctx.font = "30 px serif";
+               
+                
+                
                 // Setup Player Hitboxes
                 let playerLeft = playerX;
                 let playerRight = playerX + playerSize;
@@ -162,40 +195,20 @@
                     let landTop = land.y;
                     let landBottom = land.y + land.size;
                 });
+
+                  // Draw Player 1
+                ctx.fillStyle = "#202352";
+                ctx.fillRect(playerX, playerY, playerSize, playerSize);
+
+                
                 //Draw Port Symbol
                 ctx.fillStyle = "white";
                 ctx.font = "25 px serif";
                 ctx.fillText("⚓", 100, 527);
+
                 
-                // Update Enemies and Check Player-Enemy Collisions
-                enemies.forEach(function(badGuy) {
-                    badGuy.x = badGuy.x + badGuy.speed;
-
-                    if (badGuy.x > canvas.width - badGuy.size || badGuy.x < 0) {
-                        badGuy.speed = badGuy.speed * -1;
-                    }
-                        
-                    // Draw Enemy
-                    ctx.fillStyle = badGuy.color;
-                    ctx.fillRect(badGuy.x, badGuy.y, badGuy.size, badGuy.size);
-
-                    let enemyLeft = badGuy.x;
-                    let enemyRight = badGuy.x + badGuy.size;
-                    let enemyTop = badGuy.y;
-                    let enemyBottom = badGuy.y + badGuy.size;
-
-                    // Collision check: Player 1 vs Enemy
-                    if (playerRight > enemyLeft && playerLeft < enemyRight && playerBottom > enemyTop && playerTop < enemyBottom) {
-                        playerX = Math.random() * 1100 + 50;
-                        playerY = Math.random() * 600 + 100;
-                        if (score =  ! 0) { 
-                            score = score -1 
-                        }
-                        else { score = score}
-                    }
-
-                  
-                });
+                
+             
 
                 // Setup Coin Hitboxes (Fixed bounds calculation relative to center point radius)
                 let coinLeft = coinX - coinSize;
