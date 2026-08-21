@@ -35,11 +35,11 @@
             const ctx = canvas.getContext("2d");
          
             canvas.focus();
-
+            let devmode
             let playerX = Math.random() * 1100 + 50;
             let playerY = Math.random() * 600 + 100;
             let playerSize = 20;
-
+            devmode = true;
          
             let reefColor = '#c2577d';
             let warshipColor = '#590409';
@@ -131,6 +131,18 @@
                 //Draw Port Symbol
                 ctx.fillStyle = "white";
                 ctx.font = "30 px serif";
+                
+                //Setup Port function
+                if (playerX = 100 && playerY = 527) {
+                    alert("Go to Port?");
+                    if (devmode = true) {
+                        alert("This feature is experimental and in development. This alert will only be displayed between 9:00 and 3:25 every weekday, during devolepment hours.");
+                    }
+                }
+                
+                
+                
+                
                 // Setup Player Hitboxes
                 let playerLeft = playerX;
                 let playerRight = playerX + playerSize;
