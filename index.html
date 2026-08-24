@@ -70,8 +70,8 @@
 
             let islands = [
                 //Islands
-                 { x: 100, y: 500,  speed: 0,   size: islandSize, color: islandColor}, //I1
-                 { x: 500, y: 100, speed: 0,   size: islandSize, color: islandColor}  //I2
+                 { x: 100, y: 500,  speed: 0,   size: islandSize, color: islandColor, port: true}, //I1
+                 { x: 500, y: 100,  speed: 0,   size: islandSize, color: islandColor, port: false}  //I2
                 ];
             //general gold
             let coinX = Math.random() * 1100 + 50;
@@ -132,17 +132,6 @@
                 ctx.fillStyle = "white";
                 ctx.font = "30 px serif";
                 
-                //Setup Port function
-                if (playerX === 100 && playerY === 527) {
-                    alert("Go to Port?");
-                    if (devmode === true) {
-                        alert("This feature is experimental and in development. This alert will only be displayed between 9:00 and 3:25 every weekday, during devolepment hours.");
-                    }
-                }
-                
-                
-                
-                
                 // Setup Player Hitboxes
                 let playerLeft = playerX;
                 let playerRight = playerX + playerSize;
@@ -173,6 +162,18 @@
                     let landRight = land.x + land.size;
                     let landTop = land.y;
                     let landBottom = land.y + land.size;
+
+
+                    if (playerRight > landLeft && playerLeft < landRight && playerBottom > landTop && playerTop < landBottom) {
+                     if (land.port = true) {
+                     alert("Go to Port?");
+                         if (devmode = true) {
+                         console.log("This feature is in development. Please standby for further development");
+                         alert("This feature is currently in development. Please contact me at alexandergristede4@gmail.com for further information regarding updates.");
+                         }
+                         
+                     }
+                    }
                 });
                 //Draw Port Symbol
                 ctx.fillStyle = "white";
@@ -203,7 +204,7 @@
                         if (score =  ! 0) { 
                             score = score -1 
                         }
-                        else { score = score}
+                        else { score = 0}
                     }
 
                   
