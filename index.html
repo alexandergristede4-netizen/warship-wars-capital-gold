@@ -108,9 +108,10 @@
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
                 // Draw Coin
-                ctx.fillStyle = "white";
-                ctx.font = "20px serif";
-                ctx.fillText(💲);
+                ctx.fillStyle = "#8c8b4f";
+                ctx.beginPath();
+                ctx.arc(coinX, coinY, coinSize, 0, Math.PI * 2);
+                ctx.fill();
 
                 // Draw Player 1
                 ctx.fillStyle = "#202352";
@@ -127,7 +128,9 @@
                 ctx.font = "30px serif"; 
                 ctx.fillText("Capital Score: " + capitalScore, 40, 150);
 
-             
+                //Draw Port Symbol
+                ctx.fillStyle = "white";
+                ctx.font = "30 px serif";
                 
                 // Setup Player Hitboxes
                 let playerLeft = playerX;
@@ -163,13 +166,12 @@
 
                     if (playerRight > landLeft && playerLeft < landRight && playerBottom > landTop && playerTop < landBottom) {
                      if (land.port = true) {
-                         if (devmode = true) {
                      alert("Go to Port?");
                          if (devmode = true) {
                          console.log("This feature is in development. Please standby for further development");
                          alert("This feature is currently in development. Please contact me at alexandergristede4@gmail.com for further information regarding updates.");
                          }
-                     }   
+                         
                      }
                     }
                 });
