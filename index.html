@@ -167,9 +167,12 @@
                     if (playerRight > landLeft && playerLeft < landRight && playerBottom > landTop && playerTop < landBottom) {
                      if (land.port = true) {
                      alert("Go to Port?");
-                         if (devmode = true) {
+                         if (devmode = false) {
                          console.log("This feature is in development. Please standby for further development");
                          alert("This feature is currently in development. Please contact me at alexandergristede4@gmail.com for further information regarding updates.");
+                       
+                         } else{
+                         window.location.href = "https://alexandergristede4-netizen.github.io/Warship-Wars-Port-Page/";
                          }
                          
                      }
