@@ -100,7 +100,24 @@
                     if (playerY > 0) { playerY = playerY - 15; }
                 }
             });
-
+           function initiateCapStore {
+               let chaserY = playerY - 5;
+               let chaserX = playerX - 5;
+               let chaserSize = 30;
+               ctx.fillStyle = "#1c0101";
+               ctx.fillrect(chaserX, chaserY, chaserSize, chaserSize);
+                    
+                    let chaserLeft = chaserX;
+                    let chaserRight = chaserX + chaserSize;
+                    let chaserTop = chaserY;
+                    let chaserBottom = chaserY + chaserSize;
+                    if (playerRight > chaserLeft && playerLeft < chaserRight && playerBottom > chaserTop && playerTop < chaserBottom) {
+                   alert("You died. Try again?");
+                        score = 0;
+                        capScore = 0;
+                     }
+                
+           }
 
             
 
@@ -144,6 +161,7 @@
                 if (score === 10){
                     score = 0;
                     capitalScore = capitalScore + 1;
+                    initiateCapScore();
                 }
                 if (capitalScore === 5) {
                     alert("You have won the game!");
