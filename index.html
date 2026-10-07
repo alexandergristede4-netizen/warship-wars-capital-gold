@@ -39,7 +39,7 @@
             let playerX = Math.random() * 1100 + 50;
             let playerY = Math.random() * 600 + 100;
             let playerSize = 20;
-            devmode = true;
+            devmode = false;
          
             let reefColor = '#c2577d';
             let warshipColor = '#590409';
@@ -101,6 +101,7 @@
                 }
             });
            function initiateCapScore() {
+               if (devmode === true) {
                let chaserY = playerY - 25;
                let chaserX = playerX - 25;
                let chaserSize = 30;
@@ -116,7 +117,7 @@
                         score = 0;
                         capScore = 0;
                      }
-                
+               }
            }
 
             
@@ -188,12 +189,8 @@
 
                     if (playerRight > landLeft && playerLeft < landRight && playerBottom > landTop && playerTop < landBottom) {
                      if (land.port = true) {
-                         if (devmode = false) {
-                         console.log("This feature is in development. Please standby for further development");
-                         alert("This feature is currently in development. Please contact me at alexandergristede4@gmail.com for further information regarding updates.");
-                          } 
-                     if (devmode = true) {
-                        window.location.href = "https://alexandergristede4-netizen.github.io/Warship-Wars-Port-Page/";
+                        //Change Loc. to port
+                         window.location.href = "https://alexandergristede4-netizen.github.io/Warship-Wars-Port-Page/";
                      }    
                      }
                      }
