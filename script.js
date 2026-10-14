@@ -20,17 +20,18 @@ window.onload = function() {
             let islandColor = '#208c54';
             let islandSize = 35;
             let enemieSize = 25;
-            let enimieSpeed = 20;
+            let enemieSpeed = 20;
  //Create Variables for warship, reef, and island size, speed and color for quicker adjustments to styling
             let enemies = [
                 
-                { x: 0,   y: 650,  speed: enimieSpeed,  size: enemieSize, color: warshipColor}, //S1
-                { x: 200, y: 550,  speed: enimieSpeed,  size: enemieSize, color: warshipColor}, //S2
-                { x: 100, y: 450,  speed: enimieSpeed,  size: enemieSize, color: warshipColor}, //S3
-                { x: 400, y: 350,  speed: enimieSpeed,  size: enemieSize, color: warshipColor}, //S4
-                { x: 300, y: 150,  speed: enimieSpeed,  size: enemieSize, color: warshipColor}, //S5
-                { x: 500, y: 250,  speed: enimieSpeed,  size: enemieSize, color: warshipColor}, //S6
-                { x: 600, y: 750,  speed: enimieSpeed,  size: enemieSize, color: warshipColor}, //S7
+                { x: 0,   y: 650,  speed: enemieSpeed,  size: enemieSize, color: warshipColor}, //S1
+                { x: 200, y: 550,  speed: enemieSpeed,  size: enemieSize, color: warshipColor}, //S2
+                { x: 100, y: 450,  speed: enemieSpeed,  size: enemieSize, color: warshipColor}, //S3
+                { x: 400, y: 350,  speed: enemieSpeed,  size: enemieSize, color: warshipColor}, //S4
+                { x: 300, y: 150,  speed: enemieSpeed,  size: enemieSize, color: warshipColor}, //S5
+                { x: 500, y: 250,  speed: enemieSpeed,  size: enemieSize, color: warshipColor}, //S6
+                { x: 600, y: 750,  speed: enemieSpeed,  size: enemieSize, color: warshipColor}, //S7
+                { x: 350, y: 50,   speed: enemieSpeed,  size: enemieSize, color: warshipColor}, //S8
                
                 { x: 300, y: 300,  speed: 0,   size: enemieSize, color: reefColor}, //R1
                 { x: 600, y: 250,  speed: 0,   size: enemieSize, color: reefColor}, //R2
