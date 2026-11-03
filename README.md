@@ -3,6 +3,7 @@ Warship Wars is an online warship game dedicated to making free, fun, games acce
 This work is not your own, it is the intellectual property of Alexander Gristede. 
 You may not share this work through unofficial channels, and edited files are not our responsibility. 
 The official game has been proven to have no bugs and therefore any bugged version will be shown as edited before any court of law.
+Dev and Beta packages may have bugs, download is at your own risk.
 Editing is encouraged but, again, edited files may contain bugs.
 This game works on MacOS, Windows 10 + 11, most major Linux distributions, ChromeOS and RaspberryPiOS.
 The website contains more features.
